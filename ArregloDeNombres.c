@@ -5,6 +5,7 @@
 #define N 5
 
 void mostrarPersonas(char *listaNombres[]);
+void BuscarNombre(char *listaNombres[], int id);
 
 int main(){
 
@@ -20,7 +21,10 @@ int main(){
             strcpy(listaNombres[i], buff);
         }
         mostrarPersonas(listaNombres);
-        
+    int valorBuscado;
+    printf("\nIngrese el id a buscar: ");
+    scanf("%d", &valorBuscado);
+    BuscarNombre(listaNombres, valorBuscado);
     
     return 0;
 }
@@ -28,5 +32,14 @@ int main(){
 void mostrarPersonas(char *listaNombres[]){
     for (int i = 0; i < N; i++){
         printf("%s\n", listaNombres[i]);
+    }
+}
+
+void BuscarNombre(char *listaNombres[], int id){
+    if(id>=0 && id<N){
+        printf("%s", listaNombres[id]);
+        
+    } else {
+        printf("\nNo se encontro el valor buscado");
     }
 }
