@@ -5,6 +5,7 @@
 #define N 5
 
 void mostrarPersonas(char *listaNombres[]);
+char* BuscarNombre(char *listaNombres[], char palabraClave[]);
 
 int main(){
 
@@ -20,6 +21,13 @@ int main(){
             strcpy(listaNombres[i], buff);
         }
         mostrarPersonas(listaNombres);
+        char palabraClave[50];
+        printf("\nIngrese una palabra clave para la busqueda: ");
+        fflush(stdin);
+        scanf("%s", palabraClave);
+        char nombreEncontrado[50];
+        strcpy(nombreEncontrado, BuscarNombre(listaNombres, palabraClave));
+        printf("Nombre encontrado: %s", nombreEncontrado);
         
     
     return 0;
@@ -29,4 +37,14 @@ void mostrarPersonas(char *listaNombres[]){
     for (int i = 0; i < N; i++){
         printf("%s\n", listaNombres[i]);
     }
+}
+
+char* BuscarNombre(char *listaNombres[], char palabraClave[]){
+    char *retorno[50];
+    for (int i = 0; i < N; i++){
+        if (strstr(palabraClave, listaNombres[i]) != NULL){
+            return listaNombres[i];
+        }
+    }
+    return "-1";
 }
