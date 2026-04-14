@@ -5,7 +5,8 @@
 #define N 5
 
 void mostrarPersonas(char *listaNombres[]);
-char* BuscarNombre(char *listaNombres[], char palabraClave[]);
+void BuscarNombrePorId(char *listaNombres[], int id);
+char* BuscarNombrePorPalabra(char *listaNombres[], char palabraClave[]);
 
 int main(){
 
@@ -26,9 +27,12 @@ int main(){
         fflush(stdin);
         scanf("%s", palabraClave);
         char nombreEncontrado[50];
-        strcpy(nombreEncontrado, BuscarNombre(listaNombres, palabraClave));
+        strcpy(nombreEncontrado, BuscarNombrePorPalabra(listaNombres, palabraClave));
         printf("Nombre encontrado: %s", nombreEncontrado);
-        
+    int valorBuscado;
+    printf("\nIngrese el id a buscar: ");
+    scanf("%d", &valorBuscado);
+    BuscarNombrePorId(listaNombres, valorBuscado);
     
     return 0;
 }
@@ -39,7 +43,16 @@ void mostrarPersonas(char *listaNombres[]){
     }
 }
 
-char* BuscarNombre(char *listaNombres[], char palabraClave[]){
+void BuscarNombrePorId(char *listaNombres[], int id){
+    if(id>=0 && id<N){
+        printf("%s", listaNombres[id]);
+        
+    } else {
+        printf("\nNo se encontro el valor buscado");
+    }
+}
+
+char* BuscarNombrePorPalabra(char *listaNombres[], char palabraClave[]){
     char *retorno[50];
     for (int i = 0; i < N; i++){
         if (strstr(palabraClave, listaNombres[i]) != NULL){
