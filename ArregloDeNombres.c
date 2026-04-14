@@ -21,18 +21,43 @@ int main(){
             listaNombres[i] = (char *) malloc(tamaCad * sizeof(char) + 1);
             strcpy(listaNombres[i], buff);
         }
-        mostrarPersonas(listaNombres);
-        char palabraClave[50];
-        printf("\nIngrese una palabra clave para la busqueda: ");
-        fflush(stdin);
-        scanf("%s", palabraClave);
-        char nombreEncontrado[50];
-        strcpy(nombreEncontrado, BuscarNombrePorPalabra(listaNombres, palabraClave));
-        printf("Nombre encontrado: %s", nombreEncontrado);
+    int opcion = -1;
     int valorBuscado;
-    printf("\nIngrese el id a buscar: ");
-    scanf("%d", &valorBuscado);
-    BuscarNombrePorId(listaNombres, valorBuscado);
+    char palabraClave[50];
+    char nombreEncontrado[50];
+    while(opcion != 0){
+        printf("\n---Opciones---\n0. Salir.\n1. Busqueda por ID.\n2. Busqueda por Palabra Clave\n\nIngrese el numero de la opcion: ");
+        scanf("%d", &opcion);
+        
+        switch (opcion){
+        case 1:
+            printf("\nIngrese el id a buscar: ");
+            scanf("%d", &valorBuscado);
+            BuscarNombrePorId(listaNombres, valorBuscado);
+            break;
+        case 2:
+            printf("\nIngrese una palabra clave para la busqueda: ");
+            fflush(stdin);
+            scanf("%s", palabraClave);
+            strcpy(nombreEncontrado, BuscarNombrePorPalabra(listaNombres, palabraClave));
+            printf("Nombre encontrado: %s", nombreEncontrado);
+            break;
+        default:
+            break;
+        }
+    }
+    // mostrarPersonas(listaNombres);
+    // char palabraClave[50];
+    // printf("\nIngrese una palabra clave para la busqueda: ");
+    // fflush(stdin);
+    // scanf("%s", palabraClave);
+    // char nombreEncontrado[50];
+    // strcpy(nombreEncontrado, BuscarNombrePorPalabra(listaNombres, palabraClave));
+    // printf("Nombre encontrado: %s", nombreEncontrado);
+    // int valorBuscado;
+    // printf("\nIngrese el id a buscar: ");
+    // scanf("%d", &valorBuscado);
+    // BuscarNombrePorId(listaNombres, valorBuscado);
     
     return 0;
 }
