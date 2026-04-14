@@ -78,9 +78,8 @@ void BuscarNombrePorId(char *listaNombres[], int id){
 }
 
 char* BuscarNombrePorPalabra(char *listaNombres[], char palabraClave[]){
-    char *retorno[50];
     for (int i = 0; i < N; i++){
-        if (strstr(palabraClave, listaNombres[i]) != NULL){
+        if (strstr(listaNombres[i], palabraClave) != NULL){
             return listaNombres[i];
         }
     }
