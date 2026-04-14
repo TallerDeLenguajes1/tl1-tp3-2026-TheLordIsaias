@@ -4,6 +4,8 @@
 
 #define N 5
 
+void mostrarPersonas(char *listaNombres[]);
+
 int main(){
 
     char buff[50];
@@ -17,10 +19,14 @@ int main(){
             listaNombres[i] = (char *) malloc(tamaCad * sizeof(char) + 1);
             strcpy(listaNombres[i], buff);
         }
-        for (int i = 0; i < N; i++){
-            printf("%s\n", listaNombres[i]);
-        }
+        mostrarPersonas(listaNombres);
         
     
     return 0;
+}
+
+void mostrarPersonas(char *listaNombres[]){
+    for (int i = 0; i < N; i++){
+        printf("%s\n", listaNombres[i]);
+    }
 }
